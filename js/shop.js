@@ -27,13 +27,15 @@ let shopItemsData = [
   new ShopItem("bg4", "img/products/calico.png", "Calico", "€ 36.00", 500),
 ];
 
-let basket = [];
+let basket = JSON.parse(localStorage.getItem("data")) ?? [];
 
 const generateShop = () => {
   return (shop.innerHTML = shopItemsData
     .map((item) => {
       // Destructuring
       const { id, image, name, price } = item;
+      const searchItemsInBasket =
+      basket.find((boradGame) => boradGame.id === id) ?? [];
       return `
       <div id="product-id-${id}" class="shop__item">
         <img src="${image}" alt="${name}" />
@@ -43,7 +45,9 @@ const generateShop = () => {
             <h2>${price}</h2>
             <div class="buttons">
               <i class="bi bi-plus-lg"></i>
-              <div id="${id}" class="quantity">0</div>
+              <div id="${id}" class="quantity">${
+        searchItemsInBasket.item === undefined ? 0 : searchItemsInBasket.item
+      }</div>
               <i class="bi bi-dash-lg"></i>
             </div>
           </div>
@@ -70,8 +74,9 @@ let increment = (btn) => {
   } else {
     searchedItem.item += 1;
   }
+  //LocalStorage
+  localStorage.setItem("data", JSON.stringify(basket));
 
-  console.log(basket);
   update(quantityId);
 };
 
@@ -85,7 +90,9 @@ let decriment = (btn) => {
       return;
     }
   }
-  console.log(basket);
+  //LocalStorage
+  localStorage.setItem("data", JSON.stringify(basket));
+
   update(quantityId);
 };
 
@@ -107,6 +114,6 @@ bigMinusBtn.forEach((btn) =>
 
 let calculation = () => {
   const cartCounter = document.querySelector(".cart__number-items");
-  const total = basket.reduce((sum, item) => (sum + item.item), 0);
+  const total = basket.reduce((sum, item) => sum + item.item, 0);
   cartCounter.textContent = total;
 };
