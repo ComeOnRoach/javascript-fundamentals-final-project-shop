@@ -12,6 +12,10 @@
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: #fafafa;
+}
+
 img {
     display: block;
     width: 100%;
