@@ -1,4 +1,4 @@
-import { shopItemsData } from "./board-games-storage.js"
+import shopItemsData from "./board-games-storage.js";
 
 const shop = document.querySelector("#shop");
 
@@ -10,7 +10,7 @@ const generateShop = () => {
       // Destructuring
       const { id, image, name, price } = item;
       const searchItemsInBasket =
-      basket.find((boradGame) => boradGame.id === id) ?? [];
+        basket.find((boradGame) => boradGame.id === id) ?? [];
       return `
       <div id="product-id-${id}" class="shop__item">
         <img src="${image}" alt="${name}" />
@@ -38,7 +38,7 @@ generateShop();
 const bigPlusBtn = document.querySelectorAll(".bi-plus-lg");
 const bigMinusBtn = document.querySelectorAll(".bi-dash-lg");
 
-let increment = (btn) => {
+ let increment = (btn) => {
   const quantityId = btn.nextElementSibling.id;
   let searchedItem = basket.find((item) => item.id === quantityId);
   if (searchedItem === undefined) {
@@ -54,7 +54,7 @@ let increment = (btn) => {
   localStorage.setItem("data", JSON.stringify(basket));
 };
 
-let decriment = (btn) => {
+ let decriment = (btn) => {
   const quantityId = btn.previousElementSibling.id;
   let searchedItem = basket.find((item) => item.id === quantityId);
   if (searchedItem !== undefined) {
@@ -65,14 +65,13 @@ let decriment = (btn) => {
     }
   }
 
- 
   update(quantityId);
   basket = basket.filter((boradGame) => boradGame.item > 0);
   //LocalStorage
   localStorage.setItem("data", JSON.stringify(basket));
 };
 
-let update = (id) => {
+ let update = (id) => {
   const searchItemByIdInBasket = basket.find((item) => item.id === id);
   const itemCounterOnScreen = document.querySelector(`#${id}`);
   if (searchItemByIdInBasket !== undefined) {
@@ -88,11 +87,10 @@ bigMinusBtn.forEach((btn) =>
   btn.addEventListener("click", () => decriment(btn))
 );
 
-
 let calculation = () => {
-      const cartCounter = document.querySelector(".cart__number-items");
-      const totalCounter = basket.reduce((sum, item) => sum + item.item, 0);
-      cartCounter.textContent = totalCounter;
+  const cartCounter = document.querySelector(".cart__number-items");
+  const totalCounter = basket.reduce((sum, item) => sum + item.item, 0);
+  cartCounter.textContent = totalCounter;
 };
 
 calculation();

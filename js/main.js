@@ -1,6 +1,7 @@
 function init() {
-  import("./item.js");
+  import("./board-games-storage.js")
   import("./shop.js");
+  import("./cart.js");
 }
 
 const totalPartials = document.querySelectorAll(
