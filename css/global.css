@@ -31,6 +31,13 @@ a{
     font-family: Roboto;
 }
 
+i,
+.shop-cart-item,
+.shop-cart,
+.homeBtn{
+    cursor: pointer;
+}
+
 .container {
     padding: 0 25px;
 }

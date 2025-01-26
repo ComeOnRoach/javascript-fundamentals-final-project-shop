@@ -39,12 +39,43 @@
   }
 }
 
+.nav__nenu {
+  align-content: center;
+}
+
 .bi-plus-lg {
   color: green;
+  padding: 2px;
+}
+
+.bi-plus-lg:hover {
+  background-color: rgba(0, 128, 0, 0.559);
+  color: white;
+  border-radius: 3px;
 }
 
 .bi-dash-lg {
   color: red;
+  padding: 2px;
+}
+
+.bi-dash-lg:hover {
+  background-color: rgba(255, 0, 0, 0.585);
+  color: white;
+  border-radius: 3px;
+}
+
+.nav__menu-item {
+  background-color: #21252937;
+  padding: 8px 18px;
+}
+
+.nav__menu-item:hover {
+  background-color: #df815b;
+}
+
+.nav__menu-item:hover a {
+  color: rgb(233, 229, 229);
 }
 
 @media (min-width: 490px) {

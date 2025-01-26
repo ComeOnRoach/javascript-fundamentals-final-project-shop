@@ -1,31 +1,6 @@
-import { ShopItem } from "./item.js";
+import { shopItemsData } from "./board-games-storage.js"
 
 const shop = document.querySelector("#shop");
-
-let shopItemsData = [
-  new ShopItem(
-    "bg1",
-    "img/products/too-many-bones.jpg",
-    "Too Many Bones",
-    "€ 149.50",
-    25
-  ),
-  new ShopItem(
-    "bg2",
-    "img/products/slay-the-spire.png",
-    "Slay The Spire",
-    "€ 120.50",
-    40
-  ),
-  new ShopItem(
-    "bg3",
-    "img/products/seti.jpg",
-    "SETI: Search for Extraterrestrial Intelligence",
-    "€ 62.50",
-    25
-  ),
-  new ShopItem("bg4", "img/products/calico.png", "Calico", "€ 36.00", 500),
-];
 
 let basket = JSON.parse(localStorage.getItem("data")) ?? [];
 
@@ -46,7 +21,7 @@ const generateShop = () => {
             <div class="buttons">
               <i class="bi bi-plus-lg"></i>
               <div id="${id}" class="quantity">${
-        searchItemsInBasket.item === undefined ? 0 : searchItemsInBasket.item
+        searchItemsInBasket.item ?? 0
       }</div>
               <i class="bi bi-dash-lg"></i>
             </div>
@@ -74,10 +49,9 @@ let increment = (btn) => {
   } else {
     searchedItem.item += 1;
   }
+  update(quantityId);
   //LocalStorage
   localStorage.setItem("data", JSON.stringify(basket));
-
-  update(quantityId);
 };
 
 let decriment = (btn) => {
@@ -90,10 +64,12 @@ let decriment = (btn) => {
       return;
     }
   }
+
+ 
+  update(quantityId);
+  basket = basket.filter((boradGame) => boradGame.item > 0);
   //LocalStorage
   localStorage.setItem("data", JSON.stringify(basket));
-
-  update(quantityId);
 };
 
 let update = (id) => {
@@ -112,8 +88,11 @@ bigMinusBtn.forEach((btn) =>
   btn.addEventListener("click", () => decriment(btn))
 );
 
+
 let calculation = () => {
-  const cartCounter = document.querySelector(".cart__number-items");
-  const total = basket.reduce((sum, item) => sum + item.item, 0);
-  cartCounter.textContent = total;
+      const cartCounter = document.querySelector(".cart__number-items");
+      const totalCounter = basket.reduce((sum, item) => sum + item.item, 0);
+      cartCounter.textContent = totalCounter;
 };
+
+calculation();

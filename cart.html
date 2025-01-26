@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CrowdFinder</title>
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/shopping-cart.css">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -16,6 +17,7 @@
     ></script>
   </head>
   <body>
+    
     <header class="header">
       <section
         data-hx-trigger="load"
@@ -23,13 +25,13 @@
         data-hx-get="global.header-nav.html"
       ></section>
     </header>
+
     <section
       data-hx-trigger="load"
       data-hx-swap="outerHTML"
-      data-hx-get="board-games.html"
+      data-hx-get="shopping-cart.html"
     ></section>
-    <script type="module" src="./js/main.js"></script>
+
+    <script src="js/cart-loading.js"></script>
   </body>
 </html>
-
-
