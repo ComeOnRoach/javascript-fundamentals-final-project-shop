@@ -17,7 +17,7 @@ const generateShop = () => {
         <div class="detailes">
           <h3>${name}</h3>
           <div class="price-quantity">
-            <h2>${price}</h2>
+            <h2>€ ${price.toFixed(2)}</h2>
             <div class="buttons">
               <i class="bi bi-plus-lg"></i>
               <div id="${id}" class="quantity">${

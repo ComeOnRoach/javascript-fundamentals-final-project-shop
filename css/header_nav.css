@@ -1,5 +1,7 @@
 .header {
-  background-color: #4444440f;
+  background-color: var(--background-nav-bar);
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: -5px 5px 7px rgba(139, 86, 28, 0.2);
 }
 
 .header__nav-top {

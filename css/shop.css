@@ -7,8 +7,9 @@
 }
 
 .shop__item {
-  border: 1px solid #21252937;
+  border: 1px solid #2125293b;
   border-radius: 4px;
+  box-shadow: -5px 5px 7px var(--shadow-items);
 }
 
 .shop__item img {
@@ -23,6 +24,7 @@
   min-height: 130px;
   padding: 10px;
   gap: 10px;
+  background-color: var(--background-item-color);
 }
 
 .price-quantity {

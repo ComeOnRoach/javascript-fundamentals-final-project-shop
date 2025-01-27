@@ -9,11 +9,17 @@
 }
 
 :root{
+    --background-nav-bar: #df805b10;
+    --background-item-color: #5bdf8010;
+    --border-color: #df815b;
+    --shadow-items: #1c8b2e13;
+
     scroll-behavior: smooth;
+
 }
 
 body {
-    background-color: #fafafa;
+    background-color:  #dfba5b09;
 }
 
 img {
@@ -34,7 +40,9 @@ a{
 i,
 .shop-cart-item,
 .shop-cart,
-.homeBtn{
+.homeBtn,
+.checkout,
+.removeAll{
     cursor: pointer;
 }
 
