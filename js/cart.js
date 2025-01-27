@@ -1,6 +1,6 @@
 import shopItemsData from "./board-games-storage.js";
 // не можу розібратись з імпортами
-// import utils from "./shop.js" 
+// import utils from "./shop.js"
 
 let basket = JSON.parse(localStorage.getItem("data")) ?? [];
 
@@ -42,7 +42,7 @@ let generateCartItems = () => {
     label.innerHTML = `
     <h2>Your shopping Cart is Empty</h2>
     <a href="./index.html">
-       <button class="homeBtn">Back to Home Page</button>
+      <button class="homeBtn">Back to Home Page</button>
     </a>
     `;
   }
@@ -62,7 +62,7 @@ const increment = (item) => {
     search.item += 1;
   }
 
-    update(selectedItem.id);
+  update(selectedItem.id);
 };
 
 const decriment = (item) => {
@@ -78,22 +78,22 @@ const decriment = (item) => {
 
 const update = (id) => {
   const basketOrigin = basket.length;
-  const search = basket.find(element => element.id === id);
+  const search = basket.find((element) => element.id === id);
   const updateElement = document.getElementById(`${id}`);
 
   updateElement.textContent = search.item;
 
-  basket = basket.filter( element => element.item > 0);
+  basket = basket.filter((element) => element.item > 0);
 
   localStorage.setItem("data", JSON.stringify(basket));
   totalAmountBill();
   calculation();
-  if (basketOrigin !== basket.length){
+  if (basketOrigin !== basket.length) {
     generateCartItems();
   }
 
   totalPriceItemCalculation();
-}
+};
 
 const totalPriceItemCalculation = () => {
   basket.forEach((element, index) => {
@@ -108,13 +108,12 @@ const totalPriceItemCalculation = () => {
 };
 
 const removeItemFromCart = (removeBtnCart) => {
-  basket = basket.filter(el => el.id !== removeBtnCart.id);
+  basket = basket.filter((el) => el.id !== removeBtnCart.id);
   localStorage.setItem("data", JSON.stringify(basket));
   generateCartItems();
   totalAmountBill();
   calculation();
   totalPriceItemCalculation();
-
 };
 
 totalPriceItemCalculation();
@@ -129,11 +128,14 @@ calculation();
 
 const totalAmountBill = () => {
   if (basket.length !== 0) {
-    const totalAmount = basket.map( element => {
-      const { id, item } = element;
-      const boardGame = shopItemsData.find( boardGame => boardGame.id === id) ?? [];
-      return item * boardGame.price; 
-    }).reduce((sum, item) => sum + item, 0);
+    const totalAmount = basket
+      .map((element) => {
+        const { id, item } = element;
+        const boardGame =
+          shopItemsData.find((boardGame) => boardGame.id === id) ?? [];
+        return item * boardGame.price;
+      })
+      .reduce((sum, item) => sum + item, 0);
 
     label.innerHTML = `
     <div class="total-amount-bill">
@@ -144,13 +146,21 @@ const totalAmountBill = () => {
       <button class="removeAll">Clear Cart</button>
     </div>
     `;
-
   } else return;
-
-}
+};
 
 totalAmountBill();
 
+const removeAllBtn = document.querySelector(".buttons-checkout-remove-all");
+
+const removeAllCartItems = () => {
+  basket = [];
+  localStorage.setItem("data", JSON.stringify(basket));
+  calculation();
+  generateCartItems();
+};
+
+removeAllBtn.addEventListener('click', () => removeAllCartItems());
 
 window.increment = increment;
 window.decriment = decriment;
