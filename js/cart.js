@@ -4,39 +4,62 @@ import shopItemsData from "./board-games-storage.js";
 
 let basket = JSON.parse(localStorage.getItem("data")) ?? [];
 
-let label = document.querySelector("#label");
 let shoppingCart = document.querySelector("#shopping-cart");
+let label = document.querySelector("#label");
 
-let generateCartItems = () => {
+let generateCartItemsCart = () => {
+  shoppingCart.innerHTML = "";
   if (basket.length !== 0) {
-    let cartPage = (shoppingCart.innerHTML = basket
-      .map((boardGame) => {
+    shoppingCart.append(
+      basket.forEach((boardGame) => {
         const searchedItemById =
           shopItemsData.find((item) => item.id === boardGame.id) ?? [];
-        const { id, image, name, price, shortName } = searchedItemById;
-        return `
-        <div class="cart-item">
-            <img src="${image}" alt="${name}">
-            <div class="details">
-                <div class="title-price-x">
-                    <h4>
-                        <p class="cart__name">${shortName}</p>
-                        <p class="cart__price">€ ${price.toFixed(2)}</p>
-                    </h4>
-                    <div><i onclick="removeItemFromCart(${id})" class="bi bi-x-lg"></i> </div>           
-                </div>
-                <div class="buttons cart-buttons">
-                  <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
-                  <div id="${id}" class="quantity">${boardGame.item}</div>
-                  <i onclick="decriment(${id})" class="bi bi-dash-lg"></i>
-                </div>                    
-                <h3></h3>
-            </div>
-        </div>
-        `;
+        const { id, image, price, shortName } = searchedItemById;
+
+        // DOM Setup Elements
+        const divCartItem = document.createElement("div");
+        const itemImage = document.createElement("img");
+        const divDetails = document.createElement("div");
+        const divTitlePriceX = document.createElement("div");
+        const h4 = document.createElement("h4");
+        const pCartName = document.createElement("p");
+        const pcartPrice = document.createElement("p");
+        const divXbtn = document.createElement("div");
+        const boostrapX = document.createElement("i");
+        const divCartButtons = document.createElement("div");
+        const h3 = document.createElement('h3');
+        const boostrapPlus = document.createElement("i");
+        const divQuantity = document.createElement('div');
+        const boostrapDash = document.createElement("i");
+
+
+        divCartItem.setAttribute("class", "cart-item");
+        itemImage.setAttribute("src", `${image}`);
+        divDetails.setAttribute("class", "details");
+        divTitlePriceX.setAttribute("class", "title-price-x");
+        pCartName.setAttribute("class", "cart__name");
+        pcartPrice.setAttribute("class", "cart__price");
+        boostrapX.setAttribute("class", "bi bi-x-lg");
+        divCartButtons.setAttribute("class", "buttons cart-buttons");
+        boostrapPlus.setAttribute("class", "bi bi-plus-lg");
+        divQuantity.setAttribute("class", "quantity");
+        divQuantity.setAttribute("id", `${id}`);
+        boostrapDash.setAttribute("class", "bi bi-dash-lg");
+
+        pCartName.textContent = `${shortName}`;
+        pcartPrice.textContent = `€ ${price.toFixed(2)}`;
+        divQuantity.textContent = `${boardGame.item}`;
+
+        divCartItem.append(itemImage, divDetails);
+        divDetails.append(divTitlePriceX, divCartButtons, h3);
+        divTitlePriceX.append(h4, divXbtn);
+        h4.append(pCartName, pcartPrice);
+        divXbtn.append(boostrapX);
+        divCartButtons.append(boostrapPlus, divQuantity, boostrapDash);
+
+        shoppingCart.appendChild(divCartItem);
       })
-      .join(""));
-    return cartPage;
+    );
   } else {
     shoppingCart.innerHTML = ``;
     label.innerHTML = `
@@ -46,12 +69,15 @@ let generateCartItems = () => {
     </a>
     `;
   }
+
 };
 
-generateCartItems();
+generateCartItemsCart();
 
-const increment = (item) => {
-  const selectedItem = item;
+const incrementCart = (event) => {
+  const selectedItem = event.target
+    .closest(".cart-buttons")
+    .querySelector(".quantity");
   const search = basket.find((item) => item.id === selectedItem.id);
   if (search === undefined) {
     basket.push({
@@ -62,21 +88,23 @@ const increment = (item) => {
     search.item += 1;
   }
 
-  update(selectedItem.id);
+  updateCart(selectedItem.id);
 };
 
-const decriment = (item) => {
-  const targetedItem = item;
+const decrimentCart = (event) => {
+  const targetedItem = event.target
+    .closest(".cart-buttons")
+    .querySelector(".quantity");
   const search = basket.find((element) => element.id === targetedItem.id);
   if (search === undefined) return;
   if (search.item > 0) {
     search.item -= 1;
   }
 
-  update(targetedItem.id);
+  updateCart(targetedItem.id);
 };
 
-const update = (id) => {
+const updateCart = (id) => {
   const basketOrigin = basket.length;
   const search = basket.find((element) => element.id === id);
   const updateElement = document.getElementById(`${id}`);
@@ -86,16 +114,16 @@ const update = (id) => {
   basket = basket.filter((element) => element.item > 0);
 
   localStorage.setItem("data", JSON.stringify(basket));
-  totalAmountBill();
-  calculation();
+  totalAmountBillCart();
+  calculationCart();
   if (basketOrigin !== basket.length) {
-    generateCartItems();
+    generateCartItemsCart();
   }
 
-  totalPriceItemCalculation();
+  totalPriceItemCalculationCart();
 };
 
-const totalPriceItemCalculation = () => {
+const totalPriceItemCalculationCart = () => {
   basket.forEach((element, index) => {
     const boardGame = shopItemsData.find(
       (boardGame) => boardGame.id === element.id
@@ -107,26 +135,28 @@ const totalPriceItemCalculation = () => {
   });
 };
 
-const removeItemFromCart = (removeBtnCart) => {
-  basket = basket.filter((el) => el.id !== removeBtnCart.id);
+const removeItemFromCart = (event) => {
+  const parentElement = event.target.closest(".details");
+  const quantityElement = parentElement.querySelector(".quantity");
+  basket = basket.filter((el) => el.id !== quantityElement.id);
   localStorage.setItem("data", JSON.stringify(basket));
-  generateCartItems();
-  totalAmountBill();
-  calculation();
-  totalPriceItemCalculation();
+  generateCartItemsCart();
+  totalAmountBillCart();
+  calculationCart();
+  totalPriceItemCalculationCart();
 };
 
-totalPriceItemCalculation();
+totalPriceItemCalculationCart();
 
-let calculation = () => {
+let calculationCart = () => {
   const cartCounter = document.querySelector(".cart__number-items");
   const totalCounter = basket.reduce((sum, item) => sum + item.item, 0);
   cartCounter.textContent = totalCounter;
 };
 
-calculation();
+calculationCart();
 
-const totalAmountBill = () => {
+function totalAmountBillCart() {
   if (basket.length !== 0) {
     const totalAmount = basket
       .map((element) => {
@@ -136,32 +166,64 @@ const totalAmountBill = () => {
         return item * boardGame.price;
       })
       .reduce((sum, item) => sum + item, 0);
+    // HTML SETUP
 
-    label.innerHTML = `
-    <div class="total-amount-bill">
-      <h2>Total Bill: € ${totalAmount.toFixed(2)}</h2>
-    </div>
-    <div class="buttons-checkout-remove-all">
-      <button class="checkout">CheckOut</button>
-      <button class="removeAll">Clear Cart</button>
-    </div>
-    `;
-  } else return;
-};
+    let divTotalAmountBill = document.querySelector(".total-amount-bill");
+    let divButtonsCheckoutRemoveAll = document.querySelector(
+      ".buttons-checkout-remove-all"
+    );
 
-totalAmountBill();
+    if (!divTotalAmountBill) {
+      divTotalAmountBill = document.createElement("div");
+      divButtonsCheckoutRemoveAll = document.createElement("div");
+      divTotalAmountBill.setAttribute("class", "total-amount-bill");
+      const h2TotalBill = document.createElement("h2");
+      h2TotalBill.textContent = `Total Bill: € ${totalAmount.toFixed(2)}`;
 
-const removeAllBtn = document.querySelector(".buttons-checkout-remove-all");
+      divButtonsCheckoutRemoveAll.setAttribute(
+        "class",
+        "buttons-checkout-remove-all"
+      );
 
-const removeAllCartItems = () => {
+      const buttonCheckout = document.createElement("button");
+      buttonCheckout.setAttribute("class", "checkout");
+      buttonCheckout.textContent = "CheckOut";
+      const buttonRemoveAll = document.createElement("button");
+      buttonRemoveAll.textContent = "Clear Cart";
+      buttonRemoveAll.setAttribute("class", "removeAll");
+      //Generate HTML
+      label.append(divTotalAmountBill);
+      label.append(divButtonsCheckoutRemoveAll);
+      divTotalAmountBill.append(h2TotalBill);
+      divButtonsCheckoutRemoveAll.append(buttonCheckout);
+      divButtonsCheckoutRemoveAll.append(buttonRemoveAll);
+    }
+  } else {
+    return;
+  }
+}
+
+totalAmountBillCart();
+
+document
+  .querySelector(".removeAll")
+  .addEventListener("click", removeAllCartItems);
+
+function removeAllCartItems() {
   basket = [];
   localStorage.setItem("data", JSON.stringify(basket));
-  calculation();
-  generateCartItems();
-};
+  generateCartItemsCart();
+  calculationCart();
+}
 
-removeAllBtn.addEventListener('click', () => removeAllCartItems());
-
-window.increment = increment;
-window.decriment = decriment;
-window.removeItemFromCart = removeItemFromCart;
+shoppingCart.addEventListener('click', (event) => {
+  if(event.target.classList.contains("bi-plus-lg")){
+    incrementCart(event);
+  }
+  if(event.target.classList.contains("bi-dash-lg")){
+    decrimentCart(event)
+  }
+  if(event.target.classList.contains("bi-x-lg")){
+    removeItemFromCart(event);
+  }
+})
