@@ -10,56 +10,54 @@ let label = document.querySelector("#label");
 let generateCartItemsCart = () => {
   shoppingCart.innerHTML = "";
   if (basket.length !== 0) {
-    shoppingCart.append(
-      basket.forEach((boardGame) => {
-        const searchedItemById =
-          shopItemsData.find((item) => item.id === boardGame.id) ?? [];
-        const { id, image, price, shortName } = searchedItemById;
+    basket.forEach((boardGame) => {
+      const searchedItemById =
+        shopItemsData.find((item) => item.id === boardGame.id) ?? [];
+      const { id, image, price, shortName } = searchedItemById;
 
-        // DOM Setup Elements
-        const divCartItem = document.createElement("div");
-        const itemImage = document.createElement("img");
-        const divDetails = document.createElement("div");
-        const divTitlePriceX = document.createElement("div");
-        const h4 = document.createElement("h4");
-        const pCartName = document.createElement("p");
-        const pcartPrice = document.createElement("p");
-        const divXbtn = document.createElement("div");
-        const boostrapX = document.createElement("i");
-        const divCartButtons = document.createElement("div");
-        const h3 = document.createElement('h3');
-        const boostrapPlus = document.createElement("i");
-        const divQuantity = document.createElement('div');
-        const boostrapDash = document.createElement("i");
+      // DOM Setup Elements
+      const divCartItem = document.createElement("div");
+      const itemImage = document.createElement("img");
+      const divDetails = document.createElement("div");
+      const divTitlePriceX = document.createElement("div");
+      const h4 = document.createElement("h4");
+      const pCartName = document.createElement("p");
+      const pcartPrice = document.createElement("p");
+      const divXbtn = document.createElement("div");
+      const boostrapX = document.createElement("i");
+      const divCartButtons = document.createElement("div");
+      const h3 = document.createElement("h3");
+      const boostrapPlus = document.createElement("i");
+      const divQuantity = document.createElement("div");
+      const boostrapDash = document.createElement("i");
 
+      divCartItem.setAttribute("class", "cart-item");
+      itemImage.setAttribute("src", `${image}`);
+      divDetails.setAttribute("class", "details");
+      divTitlePriceX.setAttribute("class", "title-price-x");
+      pCartName.setAttribute("class", "cart__name");
+      pcartPrice.setAttribute("class", "cart__price");
+      boostrapX.setAttribute("class", "bi bi-x-lg");
+      divCartButtons.setAttribute("class", "buttons cart-buttons");
+      boostrapPlus.setAttribute("class", "bi bi-plus-lg");
+      divQuantity.setAttribute("class", "quantity");
+      divQuantity.setAttribute("id", `${id}`);
+      boostrapDash.setAttribute("class", "bi bi-dash-lg");
+      itemImage.setAttribute("class", "shop-image");
 
-        divCartItem.setAttribute("class", "cart-item");
-        itemImage.setAttribute("src", `${image}`);
-        divDetails.setAttribute("class", "details");
-        divTitlePriceX.setAttribute("class", "title-price-x");
-        pCartName.setAttribute("class", "cart__name");
-        pcartPrice.setAttribute("class", "cart__price");
-        boostrapX.setAttribute("class", "bi bi-x-lg");
-        divCartButtons.setAttribute("class", "buttons cart-buttons");
-        boostrapPlus.setAttribute("class", "bi bi-plus-lg");
-        divQuantity.setAttribute("class", "quantity");
-        divQuantity.setAttribute("id", `${id}`);
-        boostrapDash.setAttribute("class", "bi bi-dash-lg");
+      pCartName.textContent = `${shortName}`;
+      pcartPrice.textContent = `€ ${price.toFixed(2)}`;
+      divQuantity.textContent = `${boardGame.item}`;
 
-        pCartName.textContent = `${shortName}`;
-        pcartPrice.textContent = `€ ${price.toFixed(2)}`;
-        divQuantity.textContent = `${boardGame.item}`;
+      divCartItem.append(itemImage, divDetails);
+      divDetails.append(divTitlePriceX, divCartButtons, h3);
+      divTitlePriceX.append(h4, divXbtn);
+      h4.append(pCartName, pcartPrice);
+      divXbtn.append(boostrapX);
+      divCartButtons.append(boostrapPlus, divQuantity, boostrapDash);
 
-        divCartItem.append(itemImage, divDetails);
-        divDetails.append(divTitlePriceX, divCartButtons, h3);
-        divTitlePriceX.append(h4, divXbtn);
-        h4.append(pCartName, pcartPrice);
-        divXbtn.append(boostrapX);
-        divCartButtons.append(boostrapPlus, divQuantity, boostrapDash);
-
-        shoppingCart.appendChild(divCartItem);
-      })
-    );
+      shoppingCart.appendChild(divCartItem);
+    });
   } else {
     shoppingCart.innerHTML = ``;
     label.innerHTML = `
@@ -69,7 +67,6 @@ let generateCartItemsCart = () => {
     </a>
     `;
   }
-
 };
 
 generateCartItemsCart();
@@ -178,6 +175,7 @@ function totalAmountBillCart() {
       divButtonsCheckoutRemoveAll = document.createElement("div");
       divTotalAmountBill.setAttribute("class", "total-amount-bill");
       const h2TotalBill = document.createElement("h2");
+      h2TotalBill.setAttribute("id", "total-bill-text");
       h2TotalBill.textContent = `Total Bill: € ${totalAmount.toFixed(2)}`;
 
       divButtonsCheckoutRemoveAll.setAttribute(
@@ -197,6 +195,10 @@ function totalAmountBillCart() {
       divTotalAmountBill.append(h2TotalBill);
       divButtonsCheckoutRemoveAll.append(buttonCheckout);
       divButtonsCheckoutRemoveAll.append(buttonRemoveAll);
+    } else {
+      document.querySelector(
+        "#total-bill-text"
+      ).textContent = `Total Bill: € ${totalAmount.toFixed(2)}`;
     }
   } else {
     return;
@@ -216,14 +218,14 @@ function removeAllCartItems() {
   calculationCart();
 }
 
-shoppingCart.addEventListener('click', (event) => {
-  if(event.target.classList.contains("bi-plus-lg")){
+shoppingCart.addEventListener("click", (event) => {
+  if (event.target.classList.contains("bi-plus-lg")) {
     incrementCart(event);
   }
-  if(event.target.classList.contains("bi-dash-lg")){
-    decrimentCart(event)
+  if (event.target.classList.contains("bi-dash-lg")) {
+    decrimentCart(event);
   }
-  if(event.target.classList.contains("bi-x-lg")){
+  if (event.target.classList.contains("bi-x-lg")) {
     removeItemFromCart(event);
   }
-})
+});

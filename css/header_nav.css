@@ -1,4 +1,5 @@
 .header {
+  display: block;
   background-color: var(--background-nav-bar);
   border-bottom: 2px solid var(--border-color);
   box-shadow: -5px 5px 7px rgba(139, 86, 28, 0.2);
@@ -28,12 +29,22 @@
   display: flex;
   justify-content: space-between;
   padding: 20px 0;
+  align-items: center;
 
   .nav__nenu {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
+  }
+
+  .bi-list {
+    font-size: 2.1rem;
+  }
+
+  .bi-list:hover {
+    color: var(--border-color);
+    border: 1px solid var(--border-color);
   }
 
   .shop-cart-item {
@@ -56,4 +67,108 @@
       background-color: transparent;
     }
   }
+}
+
+.header__nav-bottom-burger {
+  .header__nav-menu-container-burger {
+    display: flex;
+    height: 100vh;
+    width: 320px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav__nenu {
+    margin-top: 200px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+
+
+
+  .shop-cart-item {
+    position: relative;
+    display: flex;
+
+    .cart__number-items {
+      position: absolute;
+      text-align: center;
+      top: -10px;
+      right: -6px;
+      z-index: 5;
+      border-radius: 4px;
+      color: white;
+      padding: 2px 3px;
+      background-color: rgba(204, 6, 6, 0.811);
+    }
+
+    .shop-cart {
+      border: 0;
+      background-color: transparent;
+    }
+  }
+}
+
+/* burger menu */
+  .nav__nenu-burger{
+    margin-top: 120px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+
+  }
+
+  .nav__menu-item-burger {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    padding: 8px 55px;
+    border-radius: 3px;
+    margin: 0;
+  }
+
+    .nav__menu-item-burger:hover {
+    background-color: var(--border-color);
+
+  }
+
+.burger-close-cart-btns{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: end;
+}
+
+.shop-cart-item-close-btn{
+  font-size: 1.3rem;
+  width: 15%;
+
+}
+.burger-cart-btn{
+  width: 15%;
+  height: 100%;
+  margin: 50px 0 0;
+  position: relative;
+  display: flex;
+  justify-content: end;
+}
+
+.shop-cart-burger{
+  display: flex;
+  background-color: transparent;
+  border: 0;
+  justify-content: center;
+  align-items: center;
+
 }

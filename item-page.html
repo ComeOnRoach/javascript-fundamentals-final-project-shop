@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>item Page</title>
+    <link rel="stylesheet" href="css/item-page.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="global.header-nav.html"
+      ></section>
+    </header>
+
+    <div class="item-page-container container">
+      <div class="information-name-cost-img">
+        <div class="information-image">
+          <img class="item-page__img" src="" alt="" />
+        </div>
+        <div class="in-stock-out-of-stock"></div>
+        <div class="name__item-container"><h3 class="name__item"></h3></div>
+
+        <div class="item amount-button-container">
+          <div class="price">
+            <p>0</p>
+          </div>
+          <div class="input-button">
+            <input id="input-id" type="number" min="1" placeholder="1" value="1"/>
+            <button class="cart-btn"><i class="bi bi-cart4"></i></button>
+          </div>
+        </div>
+        <div class="link-bgg">
+          <a href="#">View the product at BoardGameGeek</a>
+        </div>
+      </div>
+      <div class="description-video">
+        <div class="description-name">
+          <h3>DESCRIPTION:</h3>
+        </div>
+        <div class="description">
+          <p></p>
+        </div>
+        <div class="video-container"></div>
+      </div>
+    </div>
+    <script type="module" src="./js/Item-loading.js"></script>
+    <script type="module" src="./js/func/item-page-ready.js"></script>
+  </body>
+</html>

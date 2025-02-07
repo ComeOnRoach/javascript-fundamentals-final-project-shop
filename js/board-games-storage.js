@@ -4,6 +4,9 @@ let shopItemsData = [
   {
     id: "bg1",
     image: "img/products/too-many-bones.jpg",
+    linkBgg: "https://boardgamegeek.com/boardgame/192135/too-many-bones",
+    video:
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/z4RDT40CkwA?si=XWJYQAUk6DH59CcJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
     name: "Too Many Bones",
     shortName: "Too Many Bones",
     price: 149.5,
@@ -13,6 +16,10 @@ let shopItemsData = [
   {
     id: "bg2",
     image: "img/products/slay-the-spire.png",
+    linkBgg:
+      "https://boardgamegeek.com/boardgame/338960/slay-the-spire-the-board-game",
+    video:
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/89e5ZydYci4?si=w96Fchnrc2cAH2LD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
     name: "Slay The Spire the Board Game",
     shortName: "Slay The Spire",
     price: 120.5,
@@ -22,6 +29,10 @@ let shopItemsData = [
   {
     id: "bg3",
     image: "img/products/seti.jpg",
+    linkBgg:
+      "https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence",
+    video:
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/ZZHjJmuuRMQ?si=XBQOinXHYhtnn-Of" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
     name: "SETI: Search for Extraterrestrial Intelligence",
     shortName: "SETI",
     price: 62.5,
@@ -31,6 +42,9 @@ let shopItemsData = [
   {
     id: "bg4",
     image: "img/products/calico.png",
+    linkBgg: "https://boardgamegeek.com/boardgame/283155/calico",
+    video:
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/PAsUzgeh9GQ?si=N4u5cDyK-2EAklhj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
     name: "Calico",
     shortName: "Calico",
     price: 36.0,
@@ -40,6 +54,10 @@ let shopItemsData = [
   {
     id: "bg5",
     image: "img/products/the-crew-the-quest-for-planet-nine.jpg",
+    linkBgg:
+      "https://boardgamegeek.com/boardgame/284083/the-crew-the-quest-for-planet-nine",
+    video:
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/wARWz4ztJI0?si=W1N_xgUM5h1o51AH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
     name: "The Crew: The Quest for Planet Nine",
     shortName: "The Crew",
     price: 16.5,
@@ -49,6 +67,9 @@ let shopItemsData = [
   {
     id: "bg6",
     image: "img/products/gloomhaven-jaws-of-the-lion.jpg",
+    linkBgg:
+      "https://boardgamegeek.com/boardgame/291457/gloomhaven-jaws-of-the-lion",
+    video: "",
     name: "Gloomhaven: Jaws of the Lion",
     shortName: "Gloomhaven: Jaws of the Lion",
     price: 55.0,
@@ -58,6 +79,9 @@ let shopItemsData = [
   {
     id: "bg7",
     image: "img/products/arkham-horror-the-board-game.png",
+    linkBgg:
+      "https://boardgamegeek.com/boardgame/257499/arkham-horror-third-edition",
+    video: '',
     name: "Arkham Horror (Third Edition)",
     shortName: "Arkham Horror (Third Edition)",
     price: 58.5,
@@ -68,9 +92,11 @@ let shopItemsData = [
   {
     id: "bg8",
     image: "img/products/coup.jpg",
+    linkBgg: "https://boardgamegeek.com/boardgame/131357/coup",
+    video: '',
     name: "Coup",
     shortName: "Coup",
-    price: 15.00,
+    price: 15.0,
     description:
       "You are head of a family in an Italian city-state, a city run by a weak and corrupt court. You need to manipulate, bluff and bribe your way to power. Your object is to destroy the influence of all the other families, forcing them into exile. Only one family will survive... In Coup, you want to be the last player with influence in the game, with influence being represented by face-down character cards in your playing area. Each player starts the game with two coins and two influence – i.e., two face-down character cards; the fifteen card deck consists of three copies of five different characters, each with a unique set of powers: Duke: Take three coins from the treasury. Block someone from taking foreign aid. Assassin: Pay three coins and try to assassinate another player's character. Contessa: Block an assassination attempt against yourself. Captain: Take two coins from another player, or block someone from stealing coins from you. Ambassador: Draw two character cards from the Court (the deck), choose which (if any) to exchange with your face-down characters, then return two. Block someone from stealing coins from you. On your turn, you can take any of the actions listed above, regardless of which characters you actually have in front of you, or you can take one of three other actions: Income: Take one coin from the treasury. Foreign aid: Take two coins from the treasury. Coup: Pay seven coins and launch a coup against an opponent, forcing that player to lose an influence. (If you have ten coins or more, you must take this action.) When you take one of the character actions – whether actively on your turn, or defensively in response to someone else's action – that character's action automatically succeeds unless an opponent challenges you. In this case, if you can't (or don't) reveal the appropriate character, you lose an influence, turning one of your characters face-up. Face-up characters cannot be used, and if both of your characters are face-up, you're out of the game. If you do have the character in question and choose to reveal it, the opponent loses an influence, then you shuffle that character into the deck and draw a new one, perhaps getting the same character again and perhaps not. The last player to still have influence – that is, a face-down character – wins the game! A new & optional character called the Inquisitor has been added (currently, the only English edition with the Inquisitor included is the Kickstarter Version from Indie Boards & Cards. Copies in stores may not be the Kickstarter versions and may only be the base game). The Inquisitor character cards may be used to replace the Ambassador cards. Inquisitor: Draw one character card from the Court deck and choose whether or not to exchange it with one of your face-down characters. OR Force an opponent to show you one of their character cards (their choice which). If you wish it, you may then force them to draw a new card from the Court deck. They then shuffle the old card into the Court deck. Block someone from stealing coins from you",
   },

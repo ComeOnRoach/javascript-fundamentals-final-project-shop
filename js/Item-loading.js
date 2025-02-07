@@ -1,8 +1,7 @@
 function init() {
   import("./board-games-storage.js");
   import("./header-nav.js");
-  import("./func/go-to-item.js");
-  import("./shop.js");
+  import("./func/item-page-ready.js");
 }
 
 const totalPartials = document.querySelectorAll(

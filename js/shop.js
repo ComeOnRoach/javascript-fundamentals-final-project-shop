@@ -13,9 +13,11 @@ const generateShop = () => {
         basket.find((boradGame) => boradGame.id === id) ?? [];
       return `
       <div id="product-id-${id}" class="shop__item">
-        <img src="${image}" alt="${name}" />
+        <a href="#">
+          <img class="shop-image" src="${image}" alt="${name}" />
+        </a>
         <div class="detailes">
-          <h3>${name}</h3>
+          <h3 class="detailes__name"><a href="#">${name}</a></h3>
           <div class="price-quantity">
             <h2>€ ${price.toFixed(2)}</h2>
             <div class="buttons">
