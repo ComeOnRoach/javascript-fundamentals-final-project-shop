@@ -4,7 +4,7 @@
 const headerNav = document.querySelector(".header__nav-bottom");
 
 const menuLeftSide = ["Kickstarters", "Board Games", "Accessories", "Sale"];
-const menuRightSideLogedIn = ["My Orders", "My profile", "Logout"];
+const menuRightSideLogedIn = ["ADMIN", "My profile", "Logout"];
 const menuRightSideNotLogedIn = ["Register", "Login"];
 
 // window.addEventListener("resize", generatetHeaderNavMenu);
@@ -37,6 +37,7 @@ const generatetHeaderNavMenu = () => {
       ulLeftSide.append(li);
       li.append(a);
       a.textContent = menuOption;
+      console.log(menuOption)
       if (menuOption === "Board Games") {
         a.setAttribute("href", "./index.html");
       }
@@ -51,6 +52,9 @@ const generatetHeaderNavMenu = () => {
       a.textContent = menuOption;
       ulRightSide.append(li);
       li.append(a);
+      if (menuOption === "ADMIN") {
+        a.setAttribute("href", "./admin.html");
+      }
     });
     const liCart = document.createElement("li");
     liCart.className = "shop-cart-item";
@@ -173,7 +177,7 @@ const generatetHeaderNavMenu = () => {
         <li class="nav__menu-item-burger"><a href="index.html">Board Games</a></li>
         <li class="nav__menu-item-burger"><a href="#">Accessories</a></li>
         <li class="nav__menu-item-burger"><a href="#">Sale</a></li>
-        <li class="nav__menu-item-burger"><a href="#">My Orders</a></li>
+        <li class="nav__menu-item-burger"><a href="admin.html">ADMIN</a></li>
         <li class="nav__menu-item-burger"><a href="#">My profile</a></li>
         <li class="nav__menu-item-burger"><a href="#">Login</a></li>
       </ul>
@@ -185,7 +189,7 @@ const generatetHeaderNavMenu = () => {
         const basket = JSON.parse(localStorage.getItem("data"));
         console.log(basket);
         const cartCounter = document.querySelector("#cart__number-items");
-        console.log(cartCounter)
+        console.log(cartCounter);
         const totalCounter = basket.reduce((sum, item) => sum + item.item, 0);
         cartCounter.textContent = totalCounter;
       };

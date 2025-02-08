@@ -1,0 +1,17 @@
+.admin-container,
+.form-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 60px 0;
+}
+
+#form{
+    min-width: 320px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+}
+.admin__item{
+    width: 100%;
+}
