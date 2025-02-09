@@ -1,6 +1,8 @@
-import shopItemsData from "./board-games-storage.js";
+// import shopItemsData from "./board-games-storage.js";
 // не можу розібратись з імпортами
 // import utils from "./shop.js"
+
+let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) ?? [];
 
 let basket = JSON.parse(localStorage.getItem("data")) ?? [];
 

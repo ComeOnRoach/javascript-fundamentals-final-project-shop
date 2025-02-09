@@ -1,6 +1,8 @@
 // import {generateBurgerMenu} from "./generate-burger-menu.js"
 // import {calculationCart} from "./func/caclculation.js";
 
+let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) ?? [];
+
 const headerNav = document.querySelector(".header__nav-bottom");
 
 const menuLeftSide = ["Kickstarters", "Board Games", "Accessories", "Sale"];

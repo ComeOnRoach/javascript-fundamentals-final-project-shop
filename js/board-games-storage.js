@@ -1,6 +1,6 @@
 // import { ShopItem } from "./item.js";
 
-let shopItemsData = JSON.parse(localStorage.getItem('shopItemsData')) || [
+let shopItemsData = [
   {
     id: "bg1",
     image: "img/products/too-many-bones.jpg",
@@ -102,6 +102,10 @@ let shopItemsData = JSON.parse(localStorage.getItem('shopItemsData')) || [
   },
 ];
 
-localStorage.setItem("shopItemsData", JSON.stringify(shopItemsData));
+const localstorData = JSON.parse(localStorage.getItem('shopItemsData')) ?? [];
 
-export default shopItemsData;
+if (localstorData.length <= 8) {
+  localStorage.setItem("shopItemsData", JSON.stringify(shopItemsData));
+}
+
+// export default shopItemsData;

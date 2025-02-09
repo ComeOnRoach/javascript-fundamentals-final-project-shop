@@ -1,4 +1,5 @@
-import shopItemsData from "../board-games-storage.js";
+// import shopItemsData from "../board-games-storage.js";
+let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) ?? [];
 
 const shop = document.querySelector("#shop");
 const cart = document.querySelector("#shopping-cart");

@@ -6,6 +6,11 @@
     margin: 60px 0;
 }
 
+.admin-list{
+    display: flex;
+    flex-direction: column;
+}
+
 #form{
     min-width: 320px;
     max-width: 420px;
