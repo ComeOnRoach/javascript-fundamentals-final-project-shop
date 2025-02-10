@@ -65,7 +65,7 @@ const generatetHeaderNavMenu = () => {
     const buttonCart = document.createElement("button");
     buttonCart.className = "shop-cart";
     const imageCart = document.createElement("img");
-    imageCart.setAttribute("src", "img/shopping_cart.svg");
+    imageCart.setAttribute("src", "api/img/shopping_cart.svg");
     const cartNumberItems = document.createElement("div");
     cartNumberItems.className = "cart__number-items";
     cartNumberItems.textContent = "0";
@@ -97,7 +97,7 @@ const generatetHeaderNavMenu = () => {
     const buttonCart = document.createElement("button");
     buttonCart.className = "shop-cart";
     const imageCart = document.createElement("img");
-    imageCart.setAttribute("src", "img/shopping_cart.svg");
+    imageCart.setAttribute("src", "api/img/shopping_cart.svg");
     const cartNumberItems = document.createElement("div");
     cartNumberItems.className = "cart__number-items";
     cartNumberItems.textContent = "0";

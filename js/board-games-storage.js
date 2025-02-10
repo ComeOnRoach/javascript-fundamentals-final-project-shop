@@ -3,7 +3,7 @@
 let shopItemsData = [
   {
     id: "bg1",
-    image: "img/products/too-many-bones.jpg",
+    image: "api/img/products/too-many-bones.jpg",
     linkBgg: "https://boardgamegeek.com/boardgame/192135/too-many-bones",
     video:
       '<iframe width="560" height="315" src="https://www.youtube.com/embed/z4RDT40CkwA?si=XWJYQAUk6DH59CcJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
@@ -15,7 +15,7 @@ let shopItemsData = [
   },
   {
     id: "bg2",
-    image: "img/products/slay-the-spire.png",
+    image: "api/img/products/slay-the-spire.png",
     linkBgg:
       "https://boardgamegeek.com/boardgame/338960/slay-the-spire-the-board-game",
     video:
@@ -28,7 +28,7 @@ let shopItemsData = [
   },
   {
     id: "bg3",
-    image: "img/products/seti.jpg",
+    image: "api/img/products/seti.jpg",
     linkBgg:
       "https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence",
     video:
@@ -41,7 +41,7 @@ let shopItemsData = [
   },
   {
     id: "bg4",
-    image: "img/products/calico.png",
+    image: "api/img/products/calico.png",
     linkBgg: "https://boardgamegeek.com/boardgame/283155/calico",
     video:
       '<iframe width="560" height="315" src="https://www.youtube.com/embed/PAsUzgeh9GQ?si=N4u5cDyK-2EAklhj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
@@ -53,7 +53,7 @@ let shopItemsData = [
   },
   {
     id: "bg5",
-    image: "img/products/the-crew-the-quest-for-planet-nine.jpg",
+    image: "api/img/products/the-crew-the-quest-for-planet-nine.jpg",
     linkBgg:
       "https://boardgamegeek.com/boardgame/284083/the-crew-the-quest-for-planet-nine",
     video:
@@ -66,7 +66,7 @@ let shopItemsData = [
   },
   {
     id: "bg6",
-    image: "img/products/gloomhaven-jaws-of-the-lion.jpg",
+    image: "api/img/products/gloomhaven-jaws-of-the-lion.jpg",
     linkBgg:
       "https://boardgamegeek.com/boardgame/291457/gloomhaven-jaws-of-the-lion",
     video: "",
@@ -78,10 +78,10 @@ let shopItemsData = [
   },
   {
     id: "bg7",
-    image: "img/products/arkham-horror-the-board-game.png",
+    image: "api/img/products/arkham-horror-the-board-game.png",
     linkBgg:
       "https://boardgamegeek.com/boardgame/257499/arkham-horror-third-edition",
-    video: '',
+    video: "",
     name: "Arkham Horror (Third Edition)",
     shortName: "Arkham Horror (Third Edition)",
     price: 58.5,
@@ -91,9 +91,9 @@ let shopItemsData = [
 
   {
     id: "bg8",
-    image: "img/products/coup.jpg",
+    image: "api/img/products/coup.jpg",
     linkBgg: "https://boardgamegeek.com/boardgame/131357/coup",
-    video: '',
+    video: "",
     name: "Coup",
     shortName: "Coup",
     price: 15.0,
